@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../App.css";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { api } from "../api/api";
 
 const CreateBlog = () => {
   const id = localStorage.getItem("userId");
@@ -23,7 +23,7 @@ const CreateBlog = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("/blog/createBlog", {
+      const { data } = await api.post("/blog/createBlog", {
         title: inputs.title,
         description: inputs.description,
         image: inputs.image,

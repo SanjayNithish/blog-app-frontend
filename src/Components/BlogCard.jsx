@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "../App.css";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { api } from "../api/api";
 const BlogCard = ({
   title,
   description,
@@ -17,7 +17,7 @@ const BlogCard = ({
   };
   const handleDelete = async () => {
     try {
-      const { data } = await axios.delete(`/blog/deleteBlog/${id}`);
+      const { data } = await api.delete(`/blog/deleteBlog/${id}`);
       if (data?.success) {
         alert("blog deleted");
         navigate("/blogs");

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import BlogCard from "../Components/BlogCard";
-import axios from "axios";
+import { api } from "../api/api";
 
 const userBlog = () => {
   const [blogs, setBlogs] = useState([]);
   const getUserBlogs = async () => {
     try {
       const id = localStorage.getItem("userId");
-      const { data } = await axios.get(`/blog/userBlog/${id}`);
+      const { data } = await api.get(`/blog/userBlog/${id}`);
       if (data?.success) {
         setBlogs(data?.userBlog.blogs);
         console.log(blog);

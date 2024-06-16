@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { api } from "../api/api";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 const BlogDetails = () => {
@@ -10,7 +10,7 @@ const BlogDetails = () => {
 
   const getBlog = async () => {
     try {
-      const { data } = await axios.get(`/blog/getBlog/${id}`);
+      const { data } = await api.get(`/blog/getBlog/${id}`);
       if (data?.success) {
         setBlog(data?.blog);
         setInputs({
@@ -41,7 +41,7 @@ const BlogDetails = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.put(`/blog/updateBlog/${id}`, {
+      const { data } = await api.put(`/blog/updateBlog/${id}`, {
         title: inputs.title,
         description: inputs.description,
         image: inputs.image,

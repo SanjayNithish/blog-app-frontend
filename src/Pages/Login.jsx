@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { authActions } from "../Redux/Store";
-import axios from "axios";
+import { api } from "../api/api";
 import "../App.css";
 const Login = () => {
   const [input, setInput] = useState({
@@ -23,7 +23,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("/user/login", {
+      const { data } = await api.post("/user/login", {
         email: input.email,
         password: input.password,
       });

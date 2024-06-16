@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../App.css";
-import axios from "axios";
+import { api } from "../api/api";
 import BlogCard from "../Components/BlogCard";
 
 const Blogs = () => {
@@ -8,7 +8,7 @@ const Blogs = () => {
 
   const getAllBlogs = async () => {
     try {
-      const { data } = await axios.get("/blog/allBlogs");
+      const { data } = await api.get("/blog/allBlogs");
       if (data?.success) {
         setBlogs(data?.blogs);
       }
